@@ -1,16 +1,20 @@
 <!--.vitepress/theme/MyLayout.vue-->
 <script setup>
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+const route = useRoute()
+
 </script>
 
 <template>
   <div class="router" text-left>
-    <router-link to="/" class="router-item dark:text-white">
+    <router-link to="/" class="router-item dark:text-white" :class="{ 'active': route.name === 'index'}">
       Blogs
     </router-link>
-    <router-link to="/projects" class="router-item dark:text-white">
+    <router-link to="/projects" class="router-item dark:text-white" :class="{ 'active': route.name === 'projects'}">
       Projects
     </router-link>
-    <router-link to="/about" class="router-item dark:text-white">
+    <router-link to="/about" class="router-item dark:text-white" :class="{ 'active': route.name === 'about'}">
       About
     </router-link>
   </div>
@@ -30,5 +34,10 @@
 
 .router-item:hover {
   color: #000;
+}
+
+.active {
+   color: #000;
+   /* font-weight: 50; */
 }
 </style>

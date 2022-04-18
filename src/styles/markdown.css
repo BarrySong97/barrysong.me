@@ -3,6 +3,7 @@
 
 .prose {
   --prism-font-family: 'DM Mono', monospace;
+
 }
 
 .prose img {
@@ -55,4 +56,39 @@ html.dark .prose {
   --prism-line-number-gutter: #eeeeee;
   --prism-line-highlight-background: #444444;
   --prism-selection-background: #444444;
+}
+@media (max-width: 1200px) {
+  .table-of-contents {
+    display: none;
+  }
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 80px;
+  padding-top: 70px;
+  font-size: 0.8em;
+  right: 5rem;
+  width: 16rem;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+    opacity: 0;
+  text-overflow: ellipsis;
+  list-style-type: none !important;
+  transition: all .4s ease-out;
+}
+
+.table-of-contents:hover {
+  opacity: 0.5;
+}
+.table-of-contents ul li{
+  list-style-type: none;
+}
+.table-of-contents ul > li::before {
+  display: none;
+}
+
+.table-of-contents ul > li {
+ 
 }

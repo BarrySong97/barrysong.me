@@ -12,6 +12,8 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+import MarkdownItAnchor from 'markdown-it-anchor'
+import TOC from 'markdown-it-table-of-contents'
 import Unocss from 'unocss/vite'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
@@ -71,6 +73,11 @@ export default defineConfig({
       markdownItSetup(md) {
         // https://prismjs.com/
         md.use(Prism)
+        md.use(MarkdownItAnchor)
+        // add code syntax highlighting with Prism
+        md.use(TOC, {
+          includeLevel: [1, 2, 3],
+        })
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
           attrs: {

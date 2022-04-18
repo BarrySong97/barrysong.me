@@ -4,8 +4,11 @@
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Footer: typeof import('./components/Footer.vue')['default']
+    Action: typeof import('./components/Action.vue')['default']
+    AuthorInfo: typeof import('./components/AuthorInfo.vue')['default']
+    Header: typeof import('./components/Header.vue')['default']
     ListBlog: typeof import('./components/ListBlog.vue')['default']
+    ListProjects: typeof import('./components/ListProjects.vue')['default']
     Nav: typeof import('./components/Nav.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

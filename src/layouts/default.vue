@@ -1,14 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useScroll } from '@vueuse/core'
 const getFrontmatter = (route: any) => {
   return (route.meta as any).frontmatter
 }
+const el = ref<HTMLElement | null>(null)
+const { y } = useScroll(el)
 
-const router = useRouter()
-
-console.log(router.getRoutes().filter(i => i.path.startsWith('/posts')))
+const route = useRoute()
+const isShowTopInfo = ref(true)
+watch(
+  () => route.name,
+  (newName) => {
+    const arr = ['about', 'index', 'projects']
+    if (arr.includes(newName as string))
+      isShowTopInfo.value = true
+    else isShowTopInfo.value = false
+  },
+)
 
 const darkMode = ref(false)
 function switchDarkMode() {
@@ -17,30 +27,29 @@ function switchDarkMode() {
 </script>
 
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
+  <main ref="el" class="px-4 py-2 text-center text-gray-700 dark:text-gray-200">
     <div class="layout">
-      <div class="blogNameContainer">
-        <a class="blogName dark:text-white" href="">overreacted</a>
-        <div flex>
-          <span style="font-size: 12px" self-end text-gray mr-2 cursor-pointer>Ctrl + K 搜索</span>
-          <Footer />
-        </div>
-      </div>
-      <div class="authorInfo">
-        <img
-          class="avatar"
-          src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
-        >
-        <div class="authorDetail">
-          <a class="authorName" href="">Barry Song</a>
-          <div class="authorDescription">
-            I explain with words and code
-          </div>
-        </div>
-      </div>
+      <Header />
+
+      <AuthorInfo v-if="isShowTopInfo" />
       <div class="main">
-        <Nav />
+        <Nav v-if="isShowTopInfo" />
         <RouterView />
+
+        <div v-if="!isShowTopInfo" class="text-left">
+          <a
+            href="/"
+            class="
+              font-mono
+              no-underline
+              opacity-50
+              hover:opacity-75
+              border-b-1 border-b-indigo
+            "
+          >cd..</a>
+        </div>
+
+        <a v-if="y > 200" href="#top" class="back-to-top-link" aria-label="Scroll to Top">BackToTop</a>
       </div>
     </div>
   </main>
@@ -52,7 +61,14 @@ function switchDarkMode() {
   justify-content: space-between;
   align-items: center;
 }
-
+.back-to-top-link {
+  position: fixed;
+  bottom: 4rem;
+  right: 5rem;
+  color: #a0ada0;
+  font-size: 0.8em;
+  width: 16rem;
+}
 .darkModeSwitch {
   font-size: 2rem;
 }
