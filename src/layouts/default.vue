@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { useScroll } from '@vueuse/core'
 const getFrontmatter = (route: any) => {
   return (route.meta as any).frontmatter
@@ -9,16 +9,9 @@ const el = ref<HTMLElement | null>(null)
 const { y } = useScroll(el)
 
 const route = useRoute()
-const isShowTopInfo = ref(true)
-watch(
-  () => route.name,
-  (newName) => {
-    const arr = ['about', 'index', 'projects']
-    if (arr.includes(newName as string))
-      isShowTopInfo.value = true
-    else isShowTopInfo.value = false
-  },
-)
+const isShowTopInfo = computed(() => {
+  return ['about', 'index', 'projects'].includes(route.name as string)
+})
 
 const darkMode = ref(false)
 function switchDarkMode() {
@@ -33,10 +26,22 @@ function switchDarkMode() {
 
       <AuthorInfo v-if="isShowTopInfo" />
       <div class="main">
+        <h1
+          v-if="!isShowTopInfo"
+          class="text-left"
+        >
+          TestTtitle
+        </h1>
+        <div v-if="!isShowTopInfo" time opacity-50 text-sm text-left mt-1 mb-8>
+          Feb 19 · 1min
+        </div>
         <Nav v-if="isShowTopInfo" />
         <RouterView />
 
-        <div v-if="!isShowTopInfo" class="text-left">
+        <div
+          v-if="!isShowTopInfo"
+          class="text-left"
+        >
           <a
             href="/"
             class="
@@ -49,12 +54,23 @@ function switchDarkMode() {
           >cd..</a>
         </div>
 
-        <a v-if="y > 200" href="#top" class="back-to-top-link" aria-label="Scroll to Top">BackToTop</a>
+        <a
+
+          href="#top"
+          class="back-to-top-link"
+          aria-label="Scroll to Top"
+        >BackToTop</a>
       </div>
     </div>
   </main>
 </template>
 <style scoped>
+h1 {
+  font-weight: 800;
+  font-size: 2.25em;
+  margin-top: 0;
+  line-height: 1.1111111;
+}
 .blogNameContainer {
   margin-bottom: 32px;
   display: flex;
@@ -63,8 +79,8 @@ function switchDarkMode() {
 }
 .back-to-top-link {
   position: fixed;
-  bottom: 4rem;
-  right: 5rem;
+  bottom: 3rem;
+  right: 2rem;
   color: #a0ada0;
   font-size: 0.8em;
   width: 16rem;
