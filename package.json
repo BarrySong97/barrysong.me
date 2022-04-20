@@ -3,7 +3,7 @@
   "packageManager": "pnpm@6.32.3",
   "scripts": {
     "build": "vite-ssg build",
-    "dev": "vite --port 3000 --open",
+    "dev": "vite --port 3000",
     "lint": "eslint .",
     "preview": "vite preview",
     "preview-https": "serve dist",
@@ -38,6 +38,8 @@
     "cypress": "^9.5.3",
     "eslint": "^8.13.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "fs-extra": "^10.1.0",
+    "gray-matter": "^4.0.3",
     "https-localhost": "^4.7.1",
     "markdown-it-link-attributes": "^4.0.0",
     "markdown-it-prism": "^2.2.3",

@@ -2,7 +2,7 @@
   <div class="authorInfo">
     <img
       class="avatar"
-      src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+      src="https://avatars.githubusercontent.com/u/23427423?s=400&u=ee287629b3cfc67873f9b324f09634a315bc8492&v=4"
     >
     <div class="authorDetail">
       <a class="authorName" href="">Barry Song</a>
@@ -15,7 +15,7 @@
 <style scoped>
 .avatar {
   border-radius: 50px;
-  height: 3.5rem;
+  height: 4rem;
 }
 .authorName {
   text-align: left;

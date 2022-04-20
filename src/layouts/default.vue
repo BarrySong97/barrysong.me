@@ -30,7 +30,7 @@ function switchDarkMode() {
           v-if="!isShowTopInfo"
           class="text-left"
         >
-          TestTtitle
+          {{ route.meta.frontmatter.title }}
         </h1>
         <div v-if="!isShowTopInfo" time opacity-50 text-sm text-left mt-1 mb-8>
           Feb 19 · 1min
@@ -130,7 +130,3 @@ h1 {
   margin-top: 2rem;
 }
 </style>
-<route lang="yaml">
-meta:
-  layout: home
-</route>

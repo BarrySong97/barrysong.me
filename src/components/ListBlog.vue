@@ -7,7 +7,6 @@ const routes = router
   .filter(i => i.path.startsWith('/posts'))
   .filter(v => v.name)
   .filter(v => v.name !== 'posts')
-console.log(routes)
 
 function onClickTitle(path: string) {
   router.push(path)
@@ -24,14 +23,13 @@ function onClickTitle(path: string) {
         cursor-pointer
         @click="onClickTitle(item.path)"
       >
-        {{ item.name }}
+        {{ item.meta.frontmatter.title }}
       </div>
       <div time opacity-50 text-sm mt-1>
-        Feb 19 · 1min
+        <span text-base> {{ item.meta.frontmatter.date }}</span> · {{ item.meta.frontmatter.duration }}
       </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus
-        autem.
+      <div text-slate-500>
+        {{ item.meta.frontmatter.description }}
       </div>
     </div>
   </div>

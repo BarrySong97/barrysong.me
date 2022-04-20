@@ -1,6 +1,6 @@
 <template>
   <div class="blogNameContainer">
-    <a id="top" class="blogName dark:text-white" href="/">overreacted</a>
+    <a id="top" class="blogName dark:text-white" href="/">Icarealot</a>
     <div flex>
       <span style="font-size: 12px" self-end text-gray mr-2 cursor-pointer>Ctrl + K 搜索</span>
       <Action />

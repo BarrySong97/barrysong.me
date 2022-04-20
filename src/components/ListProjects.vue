@@ -1,26 +1,27 @@
 <script setup lang="ts">
+defineProps<{ projects: Record<string, any[]> }>()
+
 </script>
 
 <template>
-  <div class="ListBlog">
+  <div v-for="key in Object.keys(projects)" :key="key" class="ListBlog">
     <div class="mt-10 font-bold flex items-center">
-      Dev Efficiency
+      {{ key }}
       <div i-carbon-rocket class="ml-2" />
     </div>
     <div grid gap-4 grid-cols-2>
       <div
-        v-for="item in 6"
-        :key="item"
+        v-for="item in projects[key]"
+        :key="item.name"
         class="post mt-4 text-lg mb-1 cursor-pointer"
       >
         <div>
           <div>
             <div class="text-left mt-1">
-              <a href="/"> Knife4j2TSApi </a>
+              <a :href="item.link" target="_blank"> {{ item.name }} </a>
             </div>
             <div class="text-left desc text-sm opacity-50 font-normal">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium inventore consequatur
+              {{ item.desc }}
             </div>
           </div>
         </div>

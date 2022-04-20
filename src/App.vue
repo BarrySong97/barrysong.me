@@ -1,11 +1,8 @@
 <script setup lang="ts">
-// https://github.com/vueuse/head
-// you can use this to manipulate the document head in any components,
-// they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Vitesse',
+  title: 'Blog - Barry Song',
   meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
+    { name: 'description', content: 'This is Barry Song blog. I share my life and code' },
   ],
 })
 
@@ -16,5 +13,4 @@ useHead({
 </template>
 
 <style>
-
 </style>
