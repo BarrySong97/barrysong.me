@@ -7,7 +7,7 @@
     <div class="authorDetail">
       <a class="authorName" href="">Barry Song</a>
       <div class="authorDescription">
-        keep pushing(持续) is my way
+        keep pushing(持续) is my way.
       </div>
     </div>
   </div>
