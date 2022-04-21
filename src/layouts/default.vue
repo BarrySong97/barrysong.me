@@ -33,7 +33,7 @@ function switchDarkMode() {
           {{ route.meta.frontmatter.title }}
         </h1>
         <div v-if="!isShowTopInfo" time opacity-50 text-sm text-left mt-1 mb-8>
-          Feb 19 · 1min
+          {{ route.meta.frontmatter.date }} · {{ route.meta.frontmatter.duration }}
         </div>
         <Nav v-if="isShowTopInfo" />
         <RouterView />

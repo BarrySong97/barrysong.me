@@ -16,13 +16,7 @@ function onClickTitle(path: string) {
 <template>
   <div class="ListBlog">
     <div v-for="item in routes" :key="item.name" class="post" mt-4>
-      <div
-        class="title"
-        text-lg
-        mb-1
-        cursor-pointer
-        @click="onClickTitle(item.path)"
-      >
+      <div class="title" text-lg mb-1 cursor-pointer @click="onClickTitle(item.path)">
         {{ item.meta.frontmatter.title }}
       </div>
       <div time opacity-50 text-sm mt-1>

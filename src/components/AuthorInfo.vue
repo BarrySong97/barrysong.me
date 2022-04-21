@@ -7,7 +7,7 @@
     <div class="authorDetail">
       <a class="authorName" href="">Barry Song</a>
       <div class="authorDescription">
-        I explain with words and code
+        keep pushing(持续) is my way
       </div>
     </div>
   </div>
