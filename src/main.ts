@@ -4,7 +4,10 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
+import './styles/prism-nord.css'
 import './styles/main.css'
+import './styles/markdown.css'
+import './styles/prose.css'
 import 'uno.css'
 
 const routes = setupLayouts(generatedRoutes)
